@@ -16,7 +16,7 @@
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 1/4/2023, 1/20/2023
+///   Date: 1/4/2023, 10/10/2023
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_PROTOCOL_SERVER_MAIN_HPP
 #define XOS_APP_CONSOLE_PROTOCOL_SERVER_MAIN_HPP
@@ -74,6 +74,34 @@ protected:
         }
         return err;
     }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...input_request_run
+    virtual int input_request_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        string_t& request = this->request();
+        LOGGER_IS_LOGGED_INFO("!(err = this->all_input_request(request, argc, argv, env))...");
+        if (!(err = this->all_input_request(request, argc, argv, env))) {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_input_request(request, argc, argv, env))");
+        } else {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_input_request(request, argc, argv, env))");
+        }
+        return err;
+    }
+    virtual int after_input_request_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        string_t& request = this->request();
+        LOGGER_IS_LOGGED_INFO("!(err = this->all_process_request_run(argc, argv, env))...");
+        if (!(err = this->all_process_request_run(argc, argv, env))) {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_process_request_run(argc, argv, env))");
+        } else {
+            LOGGER_IS_LOGGED_INFO("...failed on !(" << err << " = this->all_process_request_run(argc, argv, env))");
+        }
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
 
     /// on...response_option...
     virtual int on_response_option_get

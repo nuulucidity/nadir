@@ -16,7 +16,7 @@
 ///   File: main_opt.hpp
 ///
 /// Author: $author$
-///   Date: 11/29/2022
+///   Date: 11/29/2022, 10/10/2023
 ///////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_SERVER_MAIN_OPT_HPP
 #define XOS_APP_CONSOLE_SERVER_MAIN_OPT_HPP
@@ -121,6 +121,8 @@ protected:
         }
         return err;
     }
+
+    ///////////////////////////////////////////////////////////////////////
 
     /// ...response_option...
     virtual int on_set_response_option

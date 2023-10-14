@@ -16,7 +16,7 @@
 ///   File: main.hpp
 ///
 /// Author: $author$
-///   Date: 1/20/2023
+///   Date: 1/20/2023, 10/10/2023
 //////////////////////////////////////////////////////////////////////////
 #ifndef XOS_APP_CONSOLE_BASE_MAIN_HPP
 #define XOS_APP_CONSOLE_BASE_MAIN_HPP
@@ -64,6 +64,7 @@ protected:
     typedef typename extends::out_writer_t out_writer_t;
     typedef typename extends::err_writer_t err_writer_t;
 
+    typedef xos::io::string::readert<xos::base::string, xos::io::char_reader> char_string_reader_t;
     typedef xos::io::string::readert<xos::base::string, xos::io::reader> string_reader_t;
     typedef typename string_reader_t::string_t reader_string_t;
     typedef typename reader_string_t::char_t reader_char_t;

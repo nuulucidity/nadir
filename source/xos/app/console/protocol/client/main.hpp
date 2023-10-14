@@ -75,6 +75,34 @@ protected:
         return err;
     }
 
+    ///////////////////////////////////////////////////////////////////////
+
+    /// ...input_response_run
+    virtual int input_response_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        string_t& response = this->response();
+        LOGGER_IS_LOGGED_INFO("!(err = this->all_input_response(response, argc, argv, env))...");
+        if (!(err = this->all_input_response(response, argc, argv, env))) {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_input_response(response, argc, argv, env))");
+        } else {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_input_response(response, argc, argv, env))");
+        }
+        return err;
+    }
+    virtual int after_input_response_run(int argc, char_t** argv, char_t** env) {
+        int err = 0;
+        string_t& response = this->response();
+        LOGGER_IS_LOGGED_INFO("!(err = this->all_process_response_run(argc, argv, env))...");
+        if (!(err = this->all_process_response_run(argc, argv, env))) {
+            LOGGER_IS_LOGGED_INFO("...!(" << err << " = this->all_process_response_run(argc, argv, env))");
+        } else {
+            LOGGER_IS_LOGGED_INFO("...failed on !(" << err << " = this->all_process_response_run(argc, argv, env))");
+        }
+        return err;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+
     /// on...request_option...
     virtual int on_request_option_get
     (const char_t* optarg, int optind, int argc, char_t**argv, char_t**env) {
